@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
 
 class ProductsController extends Controller
 {
@@ -13,7 +14,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        //
+        return view('products.index');
     }
 
     /**
@@ -23,7 +24,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //
+        return view('products.create');
     }
 
     /**
@@ -34,7 +35,12 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'price' => 'required',
+            'image' => 'required|image',
+            'description' => 'required'
+        ]);
     }
 
     /**
