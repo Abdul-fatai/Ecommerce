@@ -9,7 +9,8 @@
                 <div class="card-header">Create Product</div>
 
                 <div class="card-body">
-                   <form action="{{ route('products.store') }}" method="POST">
+                   <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data"> 
+
                        {{ csrf_field() }}
 
                         <div class="form-group">
@@ -26,7 +27,7 @@
                         </div>
                         <div class="form-group">
                             <label for="name">Description</label>
-                            <textarea name="description" class="form-control" cols="30" rows="10">{{ old('description')}}</textarea>
+                            <textarea name="description" id="description" class="form-control" cols="30" rows="10">{{ old('description')}}</textarea>
                         </div>
                         <div class="form-group text-center">
                             <button type="submit" class="btn btn-primary">Create Product</button>

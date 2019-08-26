@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use Session;
 
 class ProductsController extends Controller
 {
@@ -14,7 +15,8 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        return view('products.index');
+        $products = Product::all();
+        return view('products.index')->with('products', $products);
     }
 
     /**
@@ -41,6 +43,21 @@ class ProductsController extends Controller
             'image' => 'required|image',
             'description' => 'required'
         ]);
+
+        $product = new Product;
+        $product_image = $request->image;
+        $product_image_new_name = time() . $product_image->getClientOriginalName();
+        $product_image->move('uploads/products', $product_image_new_name);
+
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->image = 'uploads/products/'. $product_image_new_name; 
+        $product->description = $request->description;
+        $product->save();
+
+        Session::flash('success', 'Product Created');
+
+        return redirect()->back();
     }
 
     /**

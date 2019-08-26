@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">Products</div>
                 <div class="card-body">
-                    <table class="table hover">
+                    <table class="table table-hover">
                         <thead>
                           <tr>
                             <th scope="col">Name</th>
@@ -17,13 +17,19 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
                             <th scope="row"></th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                          </tr>
+                              @foreach($products as $product)
+                              <tr>
+                                <td> {{ $product->name }} </td>
+                                <td> {{ $product->price }} </td>
+                                <td>
+                                  <a href="" class="btn btn-info">Edit</a>
+                                </td>
+                                <td>
+                                  <a href="" class="btn btn-danger">Delete</a>
+                                </td>
+                              </tr>
+                              @endforeach
                         </tbody>
                       </table>
                 </div>
