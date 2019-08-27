@@ -26,11 +26,11 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Ecommerce') }}
                 </a>
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ route('products.index') }}">
                    Products
                 </a>
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    New Products
+                <a class="navbar-brand" href="{{ route('products.create') }}">
+                    New Product
                  </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

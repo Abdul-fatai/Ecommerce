@@ -23,10 +23,14 @@
                                 <td> {{ $product->name }} </td>
                                 <td> {{ $product->price }} </td>
                                 <td>
-                                  <a href="" class="btn btn-info">Edit</a>
+                                  <a href="{{ route('products.edit', ['id' => $product->id ]) }}" class="btn btn-info">Edit</a>
                                 </td>
                                 <td>
-                                  <a href="" class="btn btn-danger">Delete</a>
+                                 <form action="{{ route('products.destroy', ['id' => $product->id ]) }}" method="POST">
+                                   {{ method_field('DELETE') }}
+                                   {{ csrf_field() }}
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                 </form>
                                 </td>
                               </tr>
                               @endforeach
