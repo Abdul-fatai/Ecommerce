@@ -57,7 +57,7 @@ class ProductsController extends Controller
 
         Session::flash('success', 'Product Created');
 
-        return redirect()->back();
+        return redirect()->route('products.index');
     }
 
     /**
@@ -95,9 +95,31 @@ class ProductsController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'price' => 'required',
-            'image' => 'required|image',
             'description' => 'required'
         ]);
+
+        $product = Product::find($id);
+
+        if($request->hasFile('image')){
+
+            $product_image = $request->image;
+            $product_image_new_name = time() . $product_image->getClientOriginalName();
+            $product_image = move('uploads/products', $product_image_new_name);
+
+            $product = 'uploads/products/' . $product_image_new_name;
+            $product->save();
+        }
+
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->description = $request->description;
+
+        $product->save();
+
+
+        Session::flash('success', 'Product Updated');
+
+        return redirect()->route('products.index');
     }
 
     /**
@@ -108,6 +130,16 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+
+        if (file_exists($product->image)) {
+            unlink($product->image);
+        }
+
+        $product->delete();
+
+        Session::flash('success', 'Product Deleted Successfully');
+
+        return redirect()->back();
     }
 }

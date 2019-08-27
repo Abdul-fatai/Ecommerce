@@ -4,7 +4,6 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-                @include('inc.errors')
             <div class="card">
                 <div class="card-header">Create Product</div>
 

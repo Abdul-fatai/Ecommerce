@@ -79,6 +79,7 @@
         </nav>
 
         <main class="py-4">
+            @include('inc.errors')
             @yield('content')
         </main>
     </div>
