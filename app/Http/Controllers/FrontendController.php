@@ -12,4 +12,10 @@ class FrontendController extends Controller
         $products = Product::paginate(3);
         return view('index')->with('products', $products);
     }
+
+    public function singleProduct($id){
+        $product = Product::find($id);
+
+        return view('single')->with('product', $product);
+    }
 }

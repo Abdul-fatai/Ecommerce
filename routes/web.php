@@ -16,6 +16,11 @@ Route::get('/', [
     'as' => 'index'
 ]);
 
+Route::get('/product/{id}', [
+    'uses' => 'FrontendController@singleProduct',
+    'as' => 'product.single'
+]);
+
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function(){
