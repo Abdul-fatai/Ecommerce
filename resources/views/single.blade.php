@@ -32,9 +32,9 @@
                             {{ csrf_field() }}
 
                             <div class="quantity">
-                                <a href="#" class="quantity-minus quantity-minus-d">-</a>
+                                <a href="#" class="quantity-minus quantity-minus-dec">-</a>
                                 <input title="Qty" class="email input-text qty text" name="qty" type="text" value="1">
-                                <a href="#" class="quantity-plus quantity-plus-d">+</a>
+                                <a href="#" class="quantity-plus quantity-plus-dec">+</a>
                             </div>
 
                             <input type="hidden" name="pdt_id" value="{{ $product->id }}">
