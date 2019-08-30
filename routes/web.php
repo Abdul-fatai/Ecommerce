@@ -52,6 +52,11 @@ Route::get('cart/incr/{id}/{qty}', [
     'as' => 'cart.incr'
 ]);
 
+Route::get('/cart/checkout', [
+    'uses' => 'CheckoutController@index',
+    'as' => 'cart.checkout'
+]);
+
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function(){
