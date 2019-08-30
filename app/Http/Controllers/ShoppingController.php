@@ -11,7 +11,7 @@ class ShoppingController extends Controller
     public function add_to_cart(){
         $pdt = Product::find(request()->pdt_id);
 
-        $cart = Cart::add([
+        $cartItem = Cart::add([
             'id' => $pdt->id,
             'name' => $pdt->name,
             'qty' => request()->qty,
@@ -19,6 +19,12 @@ class ShoppingController extends Controller
             'price' => $pdt->price
         ]);
 
-        dd($cart);
+        Cart::associate($cartItem->rowId, 'App\Product');
+        return redirect()->route('cart');
+    }
+
+
+    public function cart(){
+        return view('cart');
     }
 }
