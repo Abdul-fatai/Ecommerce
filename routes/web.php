@@ -31,6 +31,11 @@ Route::post('/cart/add', [
     'as' => 'cart.add'
 ]);
 
+Route::get('/cart/delete/{id}', [
+    'uses' => 'ShoppingController@cart_delete',
+    'as' => 'cart.delete'
+]);
+
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function(){
