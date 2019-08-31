@@ -26,12 +26,6 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Ecommerce') }}
                 </a>
-                <a class="navbar-brand" href="{{ route('products.index') }}">
-                   Products
-                </a>
-                <a class="navbar-brand" href="{{ route('products.create') }}">
-                    New Product
-                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -79,8 +73,29 @@
         </nav>
 
         <main class="py-4">
-            @include('inc.errors')
-            @yield('content')
+            <div class="container">
+                <div class="row">
+                @if(Auth::check())  
+                    <div class="col-md-4">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <a href="/home">Home</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{{ route('products.index') }}">All Products</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="{{ route('products.create') }}">Create Product</a>
+                            </li>
+                        </ul>
+                    </div>
+                @endif
+                <div class="col-md-8">
+                    @include('inc.errors')
+                    @yield('content')
+                </div>
+                </div>
+            </div>
         </main>
     </div>
 </body>
