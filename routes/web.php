@@ -57,6 +57,11 @@ Route::get('/cart/checkout', [
     'as' => 'cart.checkout'
 ]);
 
+Route::post('/cart/checkout', [
+    'uses' => 'CheckoutController@pay',
+    'as' => 'checkout'
+]);
+
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function(){
