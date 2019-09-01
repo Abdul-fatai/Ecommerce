@@ -64,8 +64,12 @@ Route::post('/cart/checkout', [
 
 Auth::routes();
 
-Route::group(['middleware' => 'auth'], function(){
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::resource('products', 'ProductsController');
+    Route::get('/users', [
+        'uses' => 'UsersController@index',
+        'as' => 'users'
+    ]);
 });
 
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
