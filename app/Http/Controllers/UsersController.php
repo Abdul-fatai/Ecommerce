@@ -12,6 +12,9 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(){
+        $this->middleware('admin');
+    }
     public function index()
     {
         $users = User::all();
@@ -81,6 +84,10 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+
+        $user->destroy();
+
+        return redirect()->back();
     }
 }

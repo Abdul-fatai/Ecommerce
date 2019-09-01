@@ -17,9 +17,16 @@
                               @foreach($users as $user)
                               <tr>
                                 <td> {{ $user->name }} </td>
-                                <td>  </td>
+                                <td> 
+                          
+                                </td>
                                 <td>
-                                  
+                                    <form action="{{ route('user.delete', ['id' => $user->id ]) }}" >
+                                      
+                                      {{ method_field('DELETE')}}
+                                      {{ csrf_field() }}
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                     </form>
                                 </td>
                               </tr>
                               @endforeach

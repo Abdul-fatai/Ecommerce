@@ -87,9 +87,11 @@
                             <li class="list-group-item">
                                 <a href="{{ route('products.create') }}">Create Product</a>
                             </li>
-                            <li class="list-group-item">
-                                <a href="{{ route('users') }}">All Users</a>
-                            </li>
+                            @if(Auth::user()->admin)
+                                <li class="list-group-item">
+                                    <a href="{{ route('users') }}">All Users</a>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                 @endif

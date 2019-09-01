@@ -66,9 +66,17 @@ Auth::routes();
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::resource('products', 'ProductsController');
+
+    //Users Route
+
     Route::get('/users', [
         'uses' => 'UsersController@index',
         'as' => 'users'
+    ]);
+
+    Route::post('/users/delete/{id}', [
+        'uses' => 'UsersController@destroy',
+        'as' => 'user.delete'
     ]);
 });
 
