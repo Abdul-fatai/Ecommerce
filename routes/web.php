@@ -68,4 +68,4 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('products', 'ProductsController');
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
