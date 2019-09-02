@@ -87,9 +87,38 @@ class UsersController extends Controller
     {
         $user = User::find($id);
 
-        $user->destroy($id);
+        $user->delete();
 
         Session::flash('success', 'User deleted successfully');
+        
         return redirect()->back();
     }
+
+    public function make_admin($id){
+
+        $user_admin = User::find($id);
+
+        $user_admin->admin = 1;
+
+        $user_admin->save();
+
+        Session::flash('success', 'User made Admin successfully');
+
+        return redirect()->back();
+    }
+
+
+    public function user_not_admin($id){
+
+        $user_not_admin = User::find($id);
+
+        $user_not_admin->admin = 0;
+
+        $user_not_admin->save();
+
+        Session::flash('success', 'Admin permission removed successfully');
+
+        return redirect()->back();
+    }
+
 }

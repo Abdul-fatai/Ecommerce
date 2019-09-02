@@ -74,10 +74,22 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
         'as' => 'users'
     ]);
 
-    Route::post('/user/delete/{id}', [
+    Route::get('/user/delete/{id}', [
         'uses' => 'UsersController@destroy',
         'as' => 'user.delete'
     ]);
+
+    Route::get('/user/admin/{id}', [
+        'uses' => 'UsersController@make_admin',
+        'as' => 'user.admin'
+    ]);
+
+    Route::get('/user/not-admin/{id}', [
+        'uses' => 'UsersController@user_not_admin',
+        'as' => 'user.not.admin'
+    ]);
+
+
 });
 
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
