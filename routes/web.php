@@ -74,7 +74,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
         'as' => 'users'
     ]);
 
-    Route::post('/users/delete/{id}', [
+    Route::post('/user/delete/{id}', [
         'uses' => 'UsersController@destroy',
         'as' => 'user.delete'
     ]);
